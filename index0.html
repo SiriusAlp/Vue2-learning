@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Vue 初体验</h1>
+  <!-- 测试v-bind的语法糖: -->
+  <div :title="message" id="app">
+    <!-- 测试moustache语法 -->
+    {{message}}
+    <!-- 测试v-if -->
+    <span v-if="seen">v-if测试</span>
+    <ul>
+      <!-- 测试v-for -->
+      <li v-for="item in items">{{item.name}}</li>
+    </ul>
+    <!-- 测试事件触发 -->
+    <button @click="testEvent(123,$event)">点击我</button>
+    <input type="text" v-model="message">
+  </div>
+  <script src="./js/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        message: "Hello vue",
+        seen: false,
+        items: [
+          { name: "lilei" },
+          { name: "Luke" }
+        ]
+      },
+      methods: {
+        testEvent(num, event) {
+          console.log(event);
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
