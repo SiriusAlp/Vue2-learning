@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .active {
+      color: red;
+    }
+
+    .noticed {
+      font-weight: bold;
+    }
+
+    .error {
+      border: 2px dotted black;
+      text-decoration: darksalmon;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <h2>测试class绑定</h2>
+    <!-- 将会被渲染为 span class="noticed" -->
+    <span v-bind:class="{active:isActive,noticed:isNoticed}">测试案例1.0</span>
+    <span v-bind:class="classObj">测试案例1.1</span>
+
+    <h2>class数组语法</h2>
+    <span :class="['error','active',{noticed:isNoticed}]">数组语法就是将数组中的字符串或者{error:hasError}作为类名</span>
+
+    <h2>style语法</h2>
+    <span :style="{color:activeColor,fontSize:fontSize+'px'}">style内联语法用对象的形式</span>
+    <span :style="[baseStyle,enhancedStyle]">style的数组语法,数组成员是多个描述style的对象</span>
+  </div>
+  <script src="./../js/vue.js"></script>
+  <script>
+    let vm = new Vue({
+      el: "#app",
+      data: {
+        isActive: true,
+        isNoticed: true,
+        hasError: true,
+        activeColor: "blue",
+        fontSize: 72,
+        baseStyle:{
+          color: "green"
+        },
+        enhancedStyle: {
+          fontWeight: "bold"
+        }
+      },
+      computed: {
+        classObj() {
+          return {
+            error: this.hasError,
+            active: this.isActive,
+            noticed: this.isNoticed
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
