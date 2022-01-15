@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{title}}</h1>
+    
+    <h2>测试v-for的使用</h2>
+    <ul>
+      <li v-for="(item,index) in items">{{index+1}} - {{item.message}}</li>
+    </ul>
+
+    <div>
+      <span v-for="n in 10">{{n}}</span>
+    </div>
+    
+    <!-- v-for优先级高于v-if -->
+    <div>
+      <span v-for="n in 10" v-if="n%2==0">{{n+"/"}}</span>
+    </div>
+
+    
+
+  </div>
+  <script src="./../js/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        title: "default title",
+        items: [
+          { message: "someone's thief" },
+          { message: "need water" },
+          { message: "hello world" }
+        ]
+      },
+      methods: {
+        
+      }
+
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>Vue 条件渲染</h1>
+
+  <div id="app">
+    
+    <h2>v-if</h2>
+    <span v-if="seen">truthy时显示</span>
+    <span v-else>falsy时显示</span>
+    
+    <h2>key测试</h2>
+    <!-- vue会复用结构 -->
+    <template v-if="mode === 'name'">
+      <label for="">UserName</label>
+      <input key="userName" type="text" placeholder="Enter your name plz">
+    </template>
+    <template v-else>
+      <label for="">mail</label>
+      <input key="mail" type="text" placeholder="Enter your mail plz">
+    </template>
+
+    <!-- v-if有更高的切换开销，v-show有更高的初始渲染开销 -->
+    <!-- v-if是有无 v-show是修改css属性display -->
+
+  </div>
+  <script src="./../js/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        seen: true
+      },
+      methods: {
+      }
+    })
+  </script>
+</body>
+
+</html>
