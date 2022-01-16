@@ -11,18 +11,52 @@
 <body>
   <div id="app">
     <h1>{{title}}</h1>
+
+    <h2>测试事件基本使用</h2>
+    <button @click="greet">greet alert</button>
+
+    <h2>事件作为参数传递过去</h2>
+    <!-- 通过$event将事件传递过去 -->
+    <button @click="greet2('bingo',$event)">传递事件</button>
+
+    <h2>事件修饰符</h2>
+    <!-- 
+      .stop 阻止事件继续传播 event.stopPropagation window.event.cancleBubble = true
+      .prevent 阻止默认行为 event.preventDefault() window.event.returnValue = false 
+      .capture
+      .self
+      .once
+      .passive
+      同时事件修饰符可以串联,不同顺序会有不同的效果
+    -->
+    <a href="https://www.baidu.com" @click.prevent="testStop">测试.stop修饰符</a>
+  
+    <h2>按键修饰符</h2>
+    <input id="info" type="text" @keydown.enter=submit>
   </div>
 
-  
-  <script src="./js/vue.js"></script>
+  <script src="./../js/vue.js"></script>
   <script>
     var app = new Vue({
       el: "#app",
       data: {
-        title: "default title"
+        title: "事件处理",
+        name: 'luke'
       },
       methods: {
-        
+        greet(event) {
+          alert(`hello ${this.name}`)
+        },
+        greet2(info, event) {
+          alert(`${info} - ${event}`)
+        },
+        testStop(){
+          alert("阻止事件继续传播")
+        },
+        submit(){
+          // let info = document.querySelector("#info");
+          alert(info.value)
+        }
       }
 
     })

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app" :style="{fontSize: postFontSize + 'em'}">
+    <h1>{{title}}</h1>
+
+    <h2>组件的初步使用</h2>
+    <!-- 通过prop向子组件传递参数 -->
+    <button-counter color-type="green" @enlarge-text="postFontSize += 0.1"></button-counter>
+    test text
+  </div>
+
+  
+  <script src="./../js/vue.js"></script>
+  <script>
+    // 声明并注册了一个全局组件
+    Vue.component("button-counter",{
+      // 子组件通过$emit('事件名',数据) 与父组件进行通讯并把数据传递过去
+      template:`<button @click="counter++;$emit('enlarge-text')">you have clicked {{counter}} times. color is {{colorType}}</button>`,
+      // data必须是一个函数
+      data(){
+        return {
+          counter: 0
+        } 
+      },
+      props: {
+        colorType: {
+          type: String,
+          default: "red"
+        }
+      }
+    })
+    var app = new Vue({
+      el: "#app",
+      data: {
+        title: "组件基础",
+        postFontSize: 1
+      },
+      methods: {
+        
+      }
+
+    })
+  </script>
+</body>
+
+</html>

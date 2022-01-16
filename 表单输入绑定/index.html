@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{title}}</h1>
+
+    <h2>文本</h2>
+    <input type="text" v-model="message" placeHolder="edit me">
+    message is <span style="color:red">{{message}}</span>
+    <hr>
+
+    <h2>多行文本</h2>
+    <textarea name="" id="" cols="30" rows="10" v-model="multiLineMessage"></textarea>
+    多行文本为
+    <p style="white-space: pre-line;">{{multiLineMessage}}</p>
+    <hr>
+
+    <h2>测试选择框</h2>
+    <select name="" id="" v-model="selected">
+      <!-- 提供一个值为空的禁用选项 -->
+      <option value="" disabled value="">请选择</option>
+      <option>A</option>
+      <option>B</option>
+      <option>C</option>
+    </select>
+    选择的是<span>{{selected}}</span>
+    <hr>
+
+    <h2>测试多选框</h2>
+    <select name="" id="" multiple v-model="selects">
+      <option>A</option>
+      <option>B</option>
+      <option>C</option>
+      <option>D</option>
+    </select>
+    <span>{{selects}}</span>
+    <hr>
+
+    <h2>测试radio 单选按钮</h2>
+    <!-- 值为字符串 -->
+    <input type="radio" name="" id="" value="a" v-model="radioValue">
+    <span>radio value is {{radioValue}}</span>
+    <hr>
+
+    <h2>测试radio 复选框</h2>
+    <!-- 值为true或者false -->
+    <label for="ckx">checkbox</label>
+    <input type="checkbox" name="" id="ckx" value="a" v-model="checkValue">
+    <span>checkbox value is {{checkValue}}</span>
+    <hr>
+
+    <h2>修饰符</h2>
+    .lazy v-model.lazy="message" 在change事件之后进行数据同步<br>
+    .number 自动将用户输入值转化为数值类型<br>
+    .trim 过滤用户输入的首尾空格
+  </div>
+
+
+  <script src="./../js/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        title: "表单输入绑定",
+        message: "some message",
+        multiLineMessage: "mul message",
+        selected: '',
+        selects: [],
+        radioValue: '',
+        checkValue: ''
+      },
+      methods: {
+
+      }
+
+    })
+  </script>
+</body>
+
+</html>
