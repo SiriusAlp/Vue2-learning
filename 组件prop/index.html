@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{title}}</h1>
+    <!-- prop由父组件改变,最好不要在子组件内部改变prop -->
+    <info :favs="favs" id="2134" :age="99"></info>
+    
+  </div>
+
+
+  <script src="./../js/vue.js"></script>
+  <script type="module">
+    import info from './info.js' 
+    var app = new Vue({
+      el: "#app",
+      data: {
+        title: "组件prop测试",
+        favs: ['apple','banana','pear']
+      },
+      methods: {
+
+      },
+      components: {
+        info
+      }
+
+    })
+  </script>
+</body>
+
+</html>
