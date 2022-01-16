@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{title}}</h1>
+    
+    <h2>测试具名插槽和插槽作用域</h2>
+    插槽作用域,v-slop:slopName="slopScope" slopScope.propA 来访问子组件中预先保罗出来的propA属性
+    <componenta>
+      <span>first span</span>
+      <!-- v-slot:slotName  -->
+      <template v-slot:header="slopA">
+        <h1>i am header</h1>
+        <h2 style="color:red">i am header {{slopA.private}}</h2>
+      </template>
+      <h1>i am the main part</h1>
+      <template #footer>
+        <h1>i am footer</h1>
+        <h2 style="color:green">i am footer</h2>    
+      </template>
+      <h2 style="color:yellow">i am the main part 2</h2>
+
+    </componenta>
+
+  </div>
+
+  
+  <script src="./../js/vue.js"></script>
+  <script type="module">
+    import componenta from "./component.js";
+
+    var app = new Vue({
+      el: "#app",
+      data: {
+        title: "插槽",
+      },
+      methods: {
+        
+      },
+      components:{
+        componenta
+      }
+    })
+  </script>
+</body>
+
+
+
+</html>
